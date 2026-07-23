@@ -13,7 +13,7 @@ Username dicoding: yusriiii
 | Metrik evaluasi | Evaluasi dilakukan menggunakan **TensorFlow Model Analysis (TFMA)** pada komponen Evaluator, dengan metrik: **AUC**, **Precision**, **Recall**, **Binary Accuracy** (threshold kelulusan minimal 0.6, dengan *change threshold* agar model baru tidak boleh lebih buruk dari model sebelumnya), dan **Example Count**. Model hanya di-*push* oleh Pusher apabila dinyatakan *blessed* oleh Evaluator. |
 | Performa model | Model dinyatakan **BLESSED**. Hasil evaluasi pada data eval (182 sampel): **AUC 0.8526**, **Binary Accuracy 0.7802**, **Precision 0.7885**, **Recall 0.5857**. Model final otomatis disimpan oleh Pusher ke `yusriiii-pipeline/serving_model/`. |
 | Opsi deployment | Model di-deploy menggunakan **Docker** yang menjalankan **TensorFlow Serving**, di-hosting pada platform cloud **Railway** (alternatif dari Heroku). Docker image membaca variabel environment `$PORT` yang disediakan otomatis oleh Railway, serta mengaktifkan `--monitoring_config_file` bawaan TF Serving untuk mengekspos metrik dalam format Prometheus di endpoint `/monitoring/prometheus/metrics`. |
-| Web app | `https://GANTI_DENGAN_DOMAIN_RAILWAY_ANDA/v1/models/diabetes-model/metadata` — *(ganti dengan tautan domain Railway asli setelah proses deployment selesai, lihat `DEPLOYMENT.md`)* |
+| Web app | `https://machine-learning-operations-mlops-production.up.railway.app/v1/models/diabetes-model/metadata` — *(ganti dengan tautan domain Railway asli setelah proses deployment selesai, lihat `DEPLOYMENT.md`)* |
 | Monitoring | Monitoring dilakukan menggunakan **Prometheus**, yang melakukan *scrape* metrik secara berkala dari endpoint `/monitoring/prometheus/metrics` milik TF Serving (konfigurasi pada `monitoring/prometheus.yml`). Metrik yang dipantau antara lain jumlah request (`:tensorflow:serving:request_count`), latensi, dan status kesehatan model. Melalui dashboard Prometheus (`localhost:9090/targets`), status target model serving dapat dipantau apakah berstatus **UP** (sehat, model merespons dengan baik) atau **DOWN** (model bermasalah/tidak dapat diakses). Detail langkah menjalankan Prometheus ada pada `DEPLOYMENT.md`. |
 
 ## Saran Tambahan yang Diterapkan
@@ -49,8 +49,8 @@ Username dicoding: yusriiii
 │   ├── prometheus.yml
 │   └── prometheus.config
 ├── DEPLOYMENT.md                      # Panduan lengkap deploy ke Railway & menjalankan Prometheus
-├── yusriiii-deployment.png            # (dilengkapi sendiri, lihat DEPLOYMENT.md)
-└── yusriiii-monitoring.png            # (dilengkapi sendiri, lihat DEPLOYMENT.md)
+├── yusriiii-deployment.png            # gambar deployment
+└── yusriiii-monitoring.png            # gambar monitoring prometheus
 ```
 
 ## Cara Menjalankan Pipeline

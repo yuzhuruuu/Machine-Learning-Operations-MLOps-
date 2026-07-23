@@ -1,0 +1,13 @@
+# Folder ini besar (artefak lengkap TFX) dan TIDAK dibutuhkan oleh Railway
+# untuk proses deployment (Railway hanya butuh: Dockerfile, serving_model_deploy/,
+# config/, monitoring/). Boleh diabaikan agar repo GitHub tetap ringan saat push.
+yusriiii-pipeline/
+
+# File cache Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+tfx-env/
+*.egg-info/
+build/

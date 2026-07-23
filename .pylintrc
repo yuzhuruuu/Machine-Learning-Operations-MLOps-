@@ -1,0 +1,15 @@
+[MAIN]
+# TensorFlow, tfx.proto, dan tensorflow_model_analysis membuat atribut secara
+# dinamis (lazy loading / protobuf code generation) sehingga pylint secara
+# statis tidak dapat mengenalinya. Modul-modul ini ditandai sebagai
+# extension-pkg agar pylint tidak salah melaporkan false-positive
+# "no-member" untuk atribut yang sebenarnya valid saat runtime.
+extension-pkg-allow-list=tensorflow,tfx,tensorflow_model_analysis
+
+ignored-modules=tensorflow,tensorflow.keras,tfx.proto,tensorflow_model_analysis
+
+[MESSAGES CONTROL]
+disable=
+    no-member,
+    too-many-arguments,
+    too-many-locals,

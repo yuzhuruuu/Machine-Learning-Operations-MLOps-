@@ -1,0 +1,29 @@
+# prometheus.yml
+# Konfigurasi scrape target Prometheus untuk memonitor endpoint metrik
+# TensorFlow Serving (model prediksi risiko diabetes) yang telah di-deploy
+# ke Railway/Heroku.
+#
+# PENTING: Ganti nilai `targets` di bawah ini dengan domain aplikasi cloud
+# kamu yang sebenarnya (tanpa "https://"), setelah proses deployment
+# (Kriteria 3) selesai dilakukan. Contoh:
+#   targets: ["yusriiii-diabetes-serving.up.railway.app:443"]
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "diabetes-model-serving"
+    metrics_path: /monitoring/prometheus/metrics
+    scheme: https
+    static_configs:
+      - targets: ["GANTI_DENGAN_DOMAIN_RAILWAY_ANDA"]
+
+  # Target tambahan untuk pengujian secara lokal (opsional), misalnya saat
+  # menjalankan container TF Serving di komputer sendiri melalui Docker
+  # sebelum melakukan deployment ke cloud.
+  - job_name: "diabetes-model-serving-local"
+    metrics_path: /monitoring/prometheus/metrics
+    scheme: http
+    static_configs:
+      - targets: ["host.docker.internal:8501"]

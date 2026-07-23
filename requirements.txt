@@ -1,0 +1,35 @@
+# Machine Learning Pipeline & Sistem MLOps - Prediksi Risiko Diabetes
+# Dihasilkan dari environment yang sudah diuji berhasil menjalankan seluruh
+# notebook (yusriiii_submission.ipynb) & pipeline.py tanpa error.
+#
+# Cara membuat environment yang identik:
+#   python3 -m venv tfx-env
+#   source tfx-env/bin/activate   (Linux/Mac)
+#   tfx-env\Scripts\activate      (Windows)
+#   pip install -r requirements.txt
+
+tfx==1.21.0
+tensorflow==2.21.0
+tensorflow-transform==1.21.0
+tensorflow-data-validation==1.21.0
+tensorflow-model-analysis==0.52.0
+tfx-bsl==1.21.0
+ml-pipelines-sdk==1.21.0
+ml-metadata==1.21.0
+apache-beam==2.75.0
+keras==3.15.0
+keras-tuner==1.4.8
+absl-py==1.4.0
+numpy==2.4.6
+pandas==2.3.3
+scikit-learn==1.5.2
+tensorboard
+
+# Untuk menjalankan & mengeksekusi notebook
+jupyter==1.1.1
+notebook==7.6.0
+ipykernel==7.3.0
+nbformat==5.10.4
+
+# Untuk mengecek kualitas kode (clean code) pada folder modules/
+pylint==4.0.6
